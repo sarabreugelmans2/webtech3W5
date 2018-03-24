@@ -12,6 +12,7 @@ var primus = Primus.connect(url, {
   var l=60;
   var sw =0;
   var lw =0;
+
 primus.on('data', function(data){
      
         var title= document.querySelector(".title--live");
@@ -49,11 +50,11 @@ primus.on('data', function(data){
         
     if (s ==5){   
     sw++;
-    titlespa.innerHTML="Spaghetti won "+sw+" times";   
+    titlespa.innerHTML="Wins spaghetti: "+sw;   
     }
     if (l == 5){
     lw++;
-    titlelas.innerHTML="Spaghetti won "+sw+" times";
+    titlelas.innerHTML="Wins Lasagne: "+sw;
     }
     if(s==5 || l==5){
         s=60;
