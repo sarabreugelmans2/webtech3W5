@@ -10,9 +10,13 @@ var primus = Primus.connect(url, {
   });
   var s=60;
   var l=60;
+  var sw =0;
+  var lw =0;
 primus.on('data', function(data){
      
         var title= document.querySelector(".title--live");
+        var titlespa= document.querySelector(".title--spa");
+        var titlelas= document.querySelector(".title--las");
         var spa= document.querySelector(".spaghetti--live");
         var las= document.querySelector(".lasagne--live");
         //maar op je homepage is er geen classe title--live -> if loop
@@ -42,13 +46,14 @@ primus.on('data', function(data){
             title.innerHTML="You voted for Lasagne!!";
             las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         }
-    if (s ==5){
-        alert("Spaghetti won!!!");
         
+    if (s ==5){   
+    sw++;
+    titlespa.innerHTML="Spaghetti won "+sw+" times";   
     }
     if (l == 5){
-        alert("Lasagne won!!!");
-        
+    lw++;
+    titlelas.innerHTML="Spaghetti won "+sw+" times";
     }
     if(s==5 || l==5){
         s=60;
