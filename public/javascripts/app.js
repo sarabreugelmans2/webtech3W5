@@ -11,6 +11,8 @@ var primus = Primus.connect(url, {
 
 primus.on('data', function(data){
     var title= document.querySelector(".title--live");
+    //var spa= document.querySelector(".spaghetti--live");
+    //var las= document.querySelector(".lasagne--live");
     //maar op je homepage is er geen classe title--live -> if loop
     /*if (title ){
         //&& data=action->fox
@@ -19,13 +21,18 @@ primus.on('data', function(data){
     console.log(data);
     //vanaf hier ga ik knoeien::
     //var d = JSON.parse(this.data);
-    //console.log(d.action);
-    if (data.action = 'spaghetti' && title){
+    console.log(data.action);
+    if (data.action == 'spaghetti' && title){
         title.innerHTML="Spaghetti bitches";
+        //spa.style.backgroundColor = "red";
     }
-    if(data.action = 'lasagne' && title){
+
+    if(data.action == 'lasagne' && title){
         title.innerHTML="Lasagne!!";
+        //las.style.backgroundColor = "red";
     }
+
+
 });
 
 
