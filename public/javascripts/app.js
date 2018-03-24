@@ -8,8 +8,8 @@ var primus = Primus.connect(url, {
       , retries: 10 // Number: How many times we should try to reconnect.
     }
   });
-  var s=80;
-  var l=80;
+  var s=60;
+  var l=60;
 primus.on('data', function(data){
      
         var title= document.querySelector(".title--live");
@@ -31,7 +31,7 @@ primus.on('data', function(data){
             s--;   
             console.log(s);
 
-            title.innerHTML="You voted for Spaghetti bitches";
+            title.innerHTML="You voted for Spaghetti!!";
             spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
             
         }
@@ -42,22 +42,22 @@ primus.on('data', function(data){
             title.innerHTML="You voted for Lasagne!!";
             las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         }
-   
-    if (s ==0){
+    if (s ==5){
         alert("Spaghetti won!!!");
-         s=80;
-         l=80;
-         spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
-         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
-
+        
     }
-    if (l == 0){
+    if (l == 5){
         alert("Lasagne won!!!");
-        s=80;
-        l=80;
+        
+    }
+    if(s==5 || l==5){
+        s=60;
+        l=60;
         spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
+        title.innerHTML="...";
     }
+    
 
 });
 
