@@ -31,18 +31,33 @@ primus.on('data', function(data){
             s--;   
             console.log(s);
 
-            title.innerHTML="Spaghetti bitches";
+            title.innerHTML="You voted for Spaghetti bitches";
             spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
-           
+            
         }
 
         if(data.action == 'lasagne' && title){
             l--;
             console.log(l);
-            title.innerHTML="Lasagne!!";
+            title.innerHTML="You voted for Lasagne!!";
             las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         }
    
+    if (s ==0){
+        alert("Spaghetti won!!!");
+         s=80;
+         l=80;
+         spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
+         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
+
+    }
+    if (l == 0){
+        alert("Lasagne won!!!");
+        s=80;
+        l=80;
+        spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
+        las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
+    }
 
 });
 
