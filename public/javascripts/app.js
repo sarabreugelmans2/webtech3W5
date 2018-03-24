@@ -13,7 +13,7 @@ primus.on('data', function(data){
     //maar op je homepage is er geen classe title--live -> if loop
     if (title ){
         //&& data=action->fox
-        title.innerHTML="Cavia clicked"
+        title.innerHTML="Vakje clicked"
     }
     
     //alert("YO");
@@ -23,19 +23,19 @@ primus.on('data', function(data){
 
 
   // klikken op cavia -> naar server sturen
-document.querySelector(".cavia").addEventListener("click", function(e){
-    console.log("Cavia clicked");
-    primus.write({action: 'cavia'});
+document.querySelector(".spaghetti").addEventListener("click", function(e){
+    console.log("Spaghetti clicked");
+    primus.write({action: 'spaghetti'});
     // op je primus object dat je met de server hebt geconnecteerd
     e.preventDefault();
     //om te zorgen dat je muis niet verspringt? 
     //e staat voor event , je geeft het event mee aan je functie
 })
-document.querySelector(".fox").addEventListener("click", function(e){
+/*document.querySelector(".fox").addEventListener("click", function(e){
     console.log("Fox clicked");
     primus.write({action: 'fox'});
    
     e.preventDefault();
 
 
-})
+})*/
