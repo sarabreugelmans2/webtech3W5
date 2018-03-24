@@ -24,20 +24,20 @@ primus.on('data', function(data){
 
 
   // klikken op div spaghetti -> naar server sturen
-  document.querySelector(".spaghetti").addEventListener("click", function(e){
-    console.log("Cavia clicked");
-    primus.write({action: 'cavia'});
+ document.querySelector(".spaghetti").addEventListener("click", function(e){
+    console.log("Spaghet  iTime");
+    primus.write({action: 'spaghetti'});
     // op je primus object dat je met de server hebt geconnecteerd
-    e.preventDefault();
+e.preventDefault();
     //om te zorgen dat je muis niet verspringt? 
     //e staat voor event , je geeft het event mee aan je functie
 })
 
-/*document.querySelector(".fox").addEventListener("click", function(e){
-    console.log("Fox clicked");
-    primus.write({action: 'fox'});
+document.querySelector(".lasagne").addEventListener("click", function(e){
+    console.log("Lasagne time");
+    primus.write({action: 'lasagne'});
    
     e.preventDefault();
 
 
-})*/
+})
