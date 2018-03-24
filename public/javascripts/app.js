@@ -12,20 +12,27 @@ var primus = Primus.connect(url, {
 primus.on('data', function(data){
     var title= document.querySelector(".title--live");
     //maar op je homepage is er geen classe title--live -> if loop
-    if (title ){
+    /*if (title ){
         //&& data=action->fox
         title.innerHTML="Vakje clicked"
+    }*/
+    console.log(data);
+    //vanaf hier ga ik knoeien::
+    //var d = JSON.parse(this.data);
+    //console.log(d.action);
+    if (data.action = 'spaghetti' && title){
+        title.innerHTML="Spaghetti bitches";
     }
-    
-    //alert("YO");
-    //wordt op beide paginas, / en /live een alert getoond
+    if(data.action = 'lasagne' && title){
+        title.innerHTML="Lasagne!!";
+    }
 });
 
 
 
   // klikken op div spaghetti -> naar server sturen
  document.querySelector(".spaghetti").addEventListener("click", function(e){
-    console.log("Spaghet  iTime");
+    console.log("Spagheti Time");
     primus.write({action: 'spaghetti'});
     // op je primus object dat je met de server hebt geconnecteerd
 e.preventDefault();
