@@ -23,7 +23,7 @@ h1{
   grid-column: 1 / span 4;
 }
 .spaghetti, .lasagne{
-background-color: hsl(168, 100%, 50%);
+background-color: hsl(168, 100%, 80%);
 border:1px solid black;
 }
 

@@ -8,30 +8,41 @@ var primus = Primus.connect(url, {
       , retries: 10 // Number: How many times we should try to reconnect.
     }
   });
-
+  var s=80;
+  var l=80;
 primus.on('data', function(data){
-    var title= document.querySelector(".title--live");
-    //var spa= document.querySelector(".spaghetti--live");
-    //var las= document.querySelector(".lasagne--live");
-    //maar op je homepage is er geen classe title--live -> if loop
-    /*if (title ){
-        //&& data=action->fox
-        title.innerHTML="Vakje clicked"
-    }*/
-    console.log(data);
-    //vanaf hier ga ik knoeien::
-    //var d = JSON.parse(this.data);
-    console.log(data.action);
-    if (data.action == 'spaghetti' && title){
-        title.innerHTML="Spaghetti bitches";
-        //spa.style.backgroundColor = "red";
-    }
+     
+        var title= document.querySelector(".title--live");
+        var spa= document.querySelector(".spaghetti--live");
+        var las= document.querySelector(".lasagne--live");
+        //maar op je homepage is er geen classe title--live -> if loop
+        /*if (title ){
+            //&& data=action->fox
+            title.innerHTML="Vakje clicked"
+        }*/
+        console.log(data);
+        //vanaf hier ga ik knoeien::
+        //var d = JSON.parse(this.data);
+        console.log(data.action);
+        
+        if (data.action == 'spaghetti' && title){
+           
+            
+            s--;   
+            console.log(s);
 
-    if(data.action == 'lasagne' && title){
-        title.innerHTML="Lasagne!!";
-        //las.style.backgroundColor = "red";
-    }
+            title.innerHTML="Spaghetti bitches";
+            spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
+           
+        }
 
+        if(data.action == 'lasagne' && title){
+            l--;
+            console.log(l);
+            title.innerHTML="Lasagne!!";
+            las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
+        }
+   
 
 });
 
