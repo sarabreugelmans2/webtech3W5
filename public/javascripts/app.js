@@ -67,10 +67,22 @@ primus.on('data', function(data){
 
 });
 
+function submitForm(){
+    var question= document.getElementById("question").value;
+    var a1= document.getElementById("a1").value;
+    var a2=document.getElementById("a2").value;
+    console.log(question, a1, a2);
+    primus.write({question: question, answer1:a1, answer2: a2})
+    //CLEARFORM
+}
+
+
+
+
 
 
   // klikken op div spaghetti -> naar server sturen
- document.querySelector(".spaghetti").addEventListener("click", function(e){
+document.querySelector(".spaghetti").addEventListener("click", function(e){
     console.log("Spagheti Time");
     primus.write({action: 'spaghetti'});
     // op je primus object dat je met de server hebt geconnecteerd
