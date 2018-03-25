@@ -14,7 +14,7 @@ var primus = Primus.connect(url, {
   var lw =0;
 
 primus.on('data', function(data){
-     
+
         var title= document.querySelector(".title--live");
         var titlespa= document.querySelector(".title--spa");
         var titlelas= document.querySelector(".title--las");
@@ -26,9 +26,9 @@ primus.on('data', function(data){
             title.innerHTML="Vakje clicked"
         }*/
         console.log(data);
-        //vanaf hier ga ik knoeien::
-        //var d = JSON.parse(this.data);
+        
         console.log(data.action);
+        console.log(data.question);
         
         if (data.action == 'spaghetti' && title){
            
