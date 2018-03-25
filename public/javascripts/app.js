@@ -86,7 +86,9 @@ if(primus.on('data', function(data){
    /* var question=document.getElementById("question").value;
     var a1=document.getElementById("a1").value;
     var a2=document.getElementById("a1").value;*/
-
+var question= "de vraag";
+var a1= "antw 1";
+var a2= "antw 2";
 
     document.querySelector(".spaghetti").addEventListener("click", function(e){
         console.log("Spagheti Time");
