@@ -14,21 +14,19 @@ var primus = Primus.connect(url, {
   var lw =0;
 
 primus.on('data', function(data){
-
+       
         var title= document.querySelector(".title--live");
         var titlespa= document.querySelector(".title--spa");
         var titlelas= document.querySelector(".title--las");
         var spa= document.querySelector(".spaghetti--live");
         var las= document.querySelector(".lasagne--live");
         //maar op je homepage is er geen classe title--live -> if loop
-        /*if (title ){
-            //&& data=action->fox
-            title.innerHTML="Vakje clicked"
-        }*/
+      
         console.log(data);
+        console.log(data.question);
         
         console.log(data.action);
-        console.log(data.question);
+        
         
         if (data.action == 'spaghetti' && title){
            
@@ -36,7 +34,7 @@ primus.on('data', function(data){
             s--;   
             console.log(s);
 
-            title.innerHTML="You voted for Spaghetti!!";
+            title.innerHTML=data.question;
             spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
             
         }
@@ -44,7 +42,7 @@ primus.on('data', function(data){
         if(data.action == 'lasagne' && title){
             l--;
             console.log(l);
-            title.innerHTML="You voted for Lasagne!!";
+            //title.innerHTML="You voted for Lasagne!!";
             las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         }
         
@@ -67,20 +65,56 @@ primus.on('data', function(data){
 
 });
 
+
+/* ----- FORMSUBMIT PART ------ */
+
 function submitForm(){
     var question= document.getElementById("question").value;
     var a1= document.getElementById("a1").value;
     var a2=document.getElementById("a2").value;
-    console.log(question, a1, a2);
-    primus.write({question: question, answer1:a1, answer2: a2})
-    //CLEARFORM
+    //console.log(question, a1, a2);
+    primus.write({question: question, answer1:a1, answer2:a2});
+   return false;
+
 }
+if(primus.on('data', function(data){
+    var question=data.question;
+    var a1=data.answer1;
+    var a2=data.answer2;
+    console.log(a1,a2);
+}))
+   /* var question=document.getElementById("question").value;
+    var a1=document.getElementById("a1").value;
+    var a2=document.getElementById("a1").value;*/
+
+
+    document.querySelector(".spaghetti").addEventListener("click", function(e){
+        console.log("Spagheti Time");
+        var option= "spaghetti";
+    e.preventDefault();
+    primus.write({question: question, answer1:a1, answer2:a2, action:option});
+ 
+    })
+
+    document.querySelector(".lasagne").addEventListener("click", function(e){
+        console.log("Lasagne time");
+        var option= "lasagne";
+       
+        e.preventDefault();
+    
+        primus.write({action:option});
+
+    })
+    
+    //CLEARFORM
 
 
 
 
 
 
+/*
+/* ------- VOTING PART ------------ 
   // klikken op div spaghetti -> naar server sturen
 document.querySelector(".spaghetti").addEventListener("click", function(e){
     console.log("Spagheti Time");
@@ -99,3 +133,5 @@ document.querySelector(".lasagne").addEventListener("click", function(e){
 
 
 })
+
+*/

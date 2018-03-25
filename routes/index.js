@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/live', (req, res,next) => {
-  res.render('live');
+  res.render('live', {title:'live'});
 })
 
 router.get('/createpoll', (req, res,next) => {
