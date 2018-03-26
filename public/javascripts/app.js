@@ -10,8 +10,7 @@ var primus = Primus.connect(url, {
   });
   var s=60;
   var l=60;
-  var sw =0;
-  var lw =0;
+ 
 
 primus.on('data', function(data){
        
@@ -20,8 +19,6 @@ primus.on('data', function(data){
         var titles =document.querySelector(".spaghetti--choice");
         var titlel =document.querySelector(".lasagne--choice");
 
-        var titlespa= document.querySelector(".title--spa");
-        var titlelas= document.querySelector(".title--las");
         
         var spa= document.querySelector(".spaghetti--live");
         var las= document.querySelector(".lasagne--live");
@@ -31,6 +28,7 @@ primus.on('data', function(data){
         console.log(data.question);
         console.log(data.answer1);
         console.log(data.action);
+        
         if(data.question && title){
             title.innerHTML=data.question;
        }
@@ -40,14 +38,15 @@ primus.on('data', function(data){
             titlel.innerHTML=data.answer2;
         }
        
-        if (data.question != undefined){
-        if (data.action == 'spaghetti' && title){
-           
+    
+        if (data.question == undefined){
+        if (data.action == 'spaghetti'){
+           console.log("SPAGHETTI");
             
             s--;   
             console.log(s);
 
-            title.innerHTML=data.question;
+            
             spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
             
         }
@@ -59,15 +58,13 @@ primus.on('data', function(data){
             las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         }
         
-    if (s ==5){   
-    sw++;
-    titlespa.innerHTML="Wins spaghetti: "+sw;   
-    }
-    if (l == 5){
-    lw++;
-    titlelas.innerHTML="Wins Lasagne: "+sw;
-    }
-    if(s==5 || l==5){
+        if (s ==5){   
+        console.log("spaghetti heeft gewonnen");
+        }
+        if (l == 5){
+        console.log("lasagne heeft gewonnen");
+        }
+        if(s==5 || l==5){
         s=60;
         l=60;
         spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";

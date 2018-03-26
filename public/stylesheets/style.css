@@ -7,9 +7,11 @@ a {
   color: #00B7FF;
 }
 
-p{
+h4{
   font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
+  color: white;
 }
 
 .container{
@@ -34,10 +36,7 @@ border:0.7em solid black;
 h3{
   text-transform: uppercase;
 }
-p{
-  text-transform: uppercase;
-  color: white;
-}
+
 
 .spaghetti{
   grid-column: 2 / span 1;
