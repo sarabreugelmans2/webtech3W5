@@ -26,8 +26,11 @@ primus.on('data', function(data){
         console.log(data.question);
         
         console.log(data.action);
-        
-        
+        if(data.question && title){
+            title.innerHTML=data.question;
+        }
+       
+        if (data.question != undefined){
         if (data.action == 'spaghetti' && title){
            
             
@@ -61,7 +64,7 @@ primus.on('data', function(data){
         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         title.innerHTML="...";
     }
-    
+}
 
 });
 
@@ -93,7 +96,7 @@ var a2= "antw 2";*/
     document.querySelector(".spaghetti").addEventListener("click", function(e){
         console.log("Spagheti Time");
         var option= "spaghetti";
-    e.preventDefault();
+        e.preventDefault();
    
     primus.write({question: question, answer1:a1, answer2:a2, action:option});
     
