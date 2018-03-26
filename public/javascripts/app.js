@@ -16,18 +16,28 @@ var primus = Primus.connect(url, {
 primus.on('data', function(data){
        
         var title= document.querySelector(".title--live");
+        
+        var titles =document.querySelector(".spaghetti--choice");
+        var titlel =document.querySelector(".lasagne--choice");
+
         var titlespa= document.querySelector(".title--spa");
         var titlelas= document.querySelector(".title--las");
+        
         var spa= document.querySelector(".spaghetti--live");
         var las= document.querySelector(".lasagne--live");
         //maar op je homepage is er geen classe title--live -> if loop
       
         console.log(data);
         console.log(data.question);
-        
+        console.log(data.answer1);
         console.log(data.action);
         if(data.question && title){
             title.innerHTML=data.question;
+       }
+        if(data.answer1 && titles && titlel){
+            //choicespa.innerHTML=data.answer1;
+            titles.innerHTML=data.answer1;
+            titlel.innerHTML=data.answer2;
         }
        
         if (data.question != undefined){
@@ -64,8 +74,8 @@ primus.on('data', function(data){
         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
         title.innerHTML="...";
     }
+    
 }
-
 });
 
 
@@ -98,7 +108,7 @@ var a2= "antw 2";*/
         var option= "spaghetti";
         e.preventDefault();
    
-    primus.write({question: question, answer1:a1, answer2:a2, action:option});
+    primus.write({ action:option});
     
  
     })
