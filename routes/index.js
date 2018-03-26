@@ -11,7 +11,7 @@ router.get('/live', (req, res,next) => {
 })
 
 router.get('/createpoll', (req, res,next) => {
-  res.render('createpoll');
+  res.render('createpoll', {title:'createpoll'});
 })
 
 module.exports = router;

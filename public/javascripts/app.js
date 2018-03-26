@@ -67,34 +67,36 @@ primus.on('data', function(data){
 
 
 /* ----- FORMSUBMIT PART ------ */
+var question= document.getElementById("question");
+var a1=document.getElementById("a1");
+var a2=document.getElementById("a2");
 
 function submitForm(){
-    var question= document.getElementById("question").value;
-    var a1= document.getElementById("a1").value;
-    var a2=document.getElementById("a2").value;
+    question= document.getElementById("question").value;
+    a1= document.getElementById("a1").value;
+    a2=document.getElementById("a2").value;
     //console.log(question, a1, a2);
     primus.write({question: question, answer1:a1, answer2:a2});
-   return false;
 
 }
-if(primus.on('data', function(data){
-    var question=data.question;
-    var a1=data.answer1;
-    var a2=data.answer2;
-    console.log(a1,a2);
-}))
+
+
+
+
    /* var question=document.getElementById("question").value;
     var a1=document.getElementById("a1").value;
     var a2=document.getElementById("a1").value;*/
-var question= "de vraag";
+/*var question= "de vraag";
 var a1= "antw 1";
-var a2= "antw 2";
+var a2= "antw 2";*/
 
     document.querySelector(".spaghetti").addEventListener("click", function(e){
         console.log("Spagheti Time");
         var option= "spaghetti";
     e.preventDefault();
+   
     primus.write({question: question, answer1:a1, answer2:a2, action:option});
+    
  
     })
 
@@ -105,7 +107,7 @@ var a2= "antw 2";
         e.preventDefault();
     
         primus.write({action:option});
-
+   
     })
     
     //CLEARFORM
