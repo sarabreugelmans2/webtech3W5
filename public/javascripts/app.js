@@ -10,7 +10,8 @@ var primus = Primus.connect(url, {
   });
   var s=60;
   var l=60;
- 
+  var sw=0;
+  var lw=0;
 
 primus.on('data', function(data){
        
@@ -19,6 +20,8 @@ primus.on('data', function(data){
         var titles =document.querySelector(".spaghetti--choice");
         var titlel =document.querySelector(".lasagne--choice");
 
+        var subs=document.querySelector(".spaghetti--win");
+        var subl=document.querySelector(".lasagne--win");
         
         var spa= document.querySelector(".spaghetti--live");
         var las= document.querySelector(".lasagne--live");
@@ -37,6 +40,7 @@ primus.on('data', function(data){
             titles.innerHTML=data.answer1;
             titlel.innerHTML=data.answer2;
         }
+        
        
     
         if (data.question == undefined){
@@ -59,17 +63,20 @@ primus.on('data', function(data){
         }
         
         if (s ==5){   
-        console.log("spaghetti heeft gewonnen");
+            sw++;
+        subs.innerHTML= "Wins: " + sw;
         }
         if (l == 5){
-        console.log("lasagne heeft gewonnen");
+            lw++;
+        subl.innerHTML= "Wins: " + lw;
         }
         if(s==5 || l==5){
+            //alert(data.answer1+" won");
         s=60;
         l=60;
         spa.style.backgroundColor = "hsl(168, 100%, "+s+"%)";
         las.style.backgroundColor = "hsl(168, 100%, "+l+"%)";
-        title.innerHTML="...";
+        
     }
     
 }
