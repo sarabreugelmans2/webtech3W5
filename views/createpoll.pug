@@ -2,7 +2,10 @@ extends layout
 
 block content
     form(action='', class="form")
-    input(type='text', placeholder='Add a question', id="question")
-    input(type='text', placeholder='Add answer 1', id="a1")
-    input(type='text', placeholder='Add answer 2', id="a2")
+    div
+        input(type='text', placeholder='Add a question', id="question")
+    div
+        input(type='text', placeholder='Add answer 1', id="a1")
+    div
+        input(type='text', placeholder='Add answer 2', id="a2")
     button(class="submit", id='submit', onclick="submitForm()" type="button") Send
