@@ -94,6 +94,7 @@ function submitForm(){
     a2=document.getElementById("a2").value;
     //console.log(question, a1, a2);
     primus.write({question: question, answer1:a1, answer2:a2});
+    document.querySelector(".form").reset(); 
 
 }
 
